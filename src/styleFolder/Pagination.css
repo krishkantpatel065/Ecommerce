@@ -1,0 +1,35 @@
+.buttonDiv {
+ position: fixed;
+    bottom: 69px;
+    top: unset;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.09);
+    border: solid 1px #e2ebef;
+    background-color: #eff4f7;
+    width: 20%;
+    padding: 5px 10px 5px 5px;
+}
+.previous {
+  margin-right: 10px;
+  /* border: 1px solid cadetblue; */
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: 560;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.next {
+  /* border: 1px solid cadetblue; */
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: 560;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

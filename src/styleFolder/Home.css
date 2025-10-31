@@ -1,0 +1,76 @@
+.home-container {
+  background-color: #ffffff;
+  transform: translateY(-5px);
+}
+.home-content {
+  text-align: center;
+}
+.saleIsLive {
+  max-width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: centre;
+}
+.saleIsLive a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  background: transparent;
+}
+.sale {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1a2024;
+  font-size: 24px;
+  font-family: Metrophobic, sans-serif;
+  margin: 0px 0px 12px 12px;
+}
+.sale b {
+  color: #2f5b96;
+  font-size: 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: bold;
+  font-family: Metrophobic, sans-serif;
+}
+/* .gridProduct {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+  align-content: center;
+  align-items: center;
+} */
+.viewMore {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px;
+  color: rgb(39 83 85);
+}
+.browseAll {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px;
+  color: rgb(39 83 85);
+}
+.continue-Shopping {
+  text-align: center;
+}
+.continue-Shopping h3 {
+  color: "#333";
+}
+.userName {
+  color: rgb(230, 144, 82);
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bolder;
+}
+.footer {
+  text-align: center;
+  font-family: Poppins;
+}

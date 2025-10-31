@@ -1,0 +1,15 @@
+.ListDiv {
+  text-align: center;
+}
+ul li {
+  list-style: none;
+}
+.Clearbutton {
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 16px;
+  background: lightblue;
+  border: 2px solid beige;
+  outline: none;
+  padding: 15px;
+}

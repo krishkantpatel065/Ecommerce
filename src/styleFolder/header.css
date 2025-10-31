@@ -1,0 +1,126 @@
+/* body {
+  margin: 0;
+  padding: 0;
+}
+ .header {
+  display: flex;
+  justify-content: space-between;
+background: linear-gradient(90deg, #007bff, #513e71);
+  padding: 5px 50px;
+  box-shadow: 2px 2px 4px rgba(224, 171, 171, 0.1);
+} 
+.header ul {
+  display: flex;
+  list-style: none;
+  width: 355px;
+  margin: auto;
+  padding: 15px;
+  justify-content: space-around;
+  
+} 
+
+.header ul li a {
+  padding: 10px;
+  text-decoration: none;
+  color: rgb(238, 213, 132);
+  font-size: 15px;
+  font-weight: 900;
+  &:hover{
+     background: rgb(238, 234, 234); 
+    border-bottom: 1px solid blue;
+    color: #e65c00;
+  }
+}
+.header ul li p {
+  position: relative;
+  bottom: 10px;
+  font-weight: 900;
+  color: rgb(238, 213, 132);
+}
+.link {
+  color: sienna;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  &:active {
+    color: darkred;
+    border-bottom: 2px solid darkred;
+  }
+  &:hover {
+    color: darkred;
+  }
+}
+.link h2 {
+  margin: 15px;
+}
+.college .link {
+  text-decoration: none;
+  color: rgb(20, 156, 138);
+  font-size: 20px;
+  margin: 20px;
+}
+.home-container {
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-content {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  transition: all 0.3s ease;
+}
+
+.home-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  color: #333333;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #ff6600;
+}
+
+.welcome-msg {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.home-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 20px 0;
+  object-fit: cover;
+}
+
+.shop-btn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shop-btn:hover {
+  background-color: #e65c00;
+  transform: scale(1.05);
+}  */

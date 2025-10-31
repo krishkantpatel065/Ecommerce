@@ -1,0 +1,73 @@
+.topDiv {
+  font-size: 15px;
+  padding: 2.5px 1px;
+  height: 73%;
+  /* display: flex
+; */
+  width: 100%;
+  /* align-items: center; */
+}
+.mainDiv {
+  max-width: 100%;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -7px;
+  background-color: #e9ecf1;
+  height: 20%;
+}
+.warrantyCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.gst {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.freeExpress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Replacement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+/* b {
+  
+  font-weight: 800;
+  font-style: normal;
+ 
+  font-size: 12px;
+} */
+.subDiv {
+  padding: 0;
+  text-align: left;
+  margin: auto 10px;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: system-ui, "Segoe UI", "Open Sans", sans-serif;
+}
+.bold {
+  font-weight: bolder;
+  font-size: 12px;
+  font-family: "Metrophobic", sans-serif;
+  color: #000;
+}
+@media (max-width:768px) {
+  .innerDiv{
+    display: flex;
+    flex-direction: column;
+  }
+}
