@@ -1,29 +1,61 @@
-import React from 'react'
+import React, { useContext } from "react";
+import "../styleFolder/Profile.css";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 function Profile() {
-    const user = JSON.parse(localStorage.getItem("user"))?.[0];
-    
+  const { user, logout } = useContext(AuthContext);
+  const userDetail = JSON.parse(localStorage.getItem("user"))?.[0];
+  console.log(userDetail);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
-    <div>
-        <h2>User Details</h2>
-        <div style={{border:"1px solid gray",borderRadius:'10px',padding:"10px",width:"300px",margin:"auto",boxShadow:" rgba(185, 168, 35, 0.34) 1px 10px 18px 6px"}}>
-         <div style={{margin:"auto",textAlign:"center"}}>
-         <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-52e0dc.svg" alt="Login" class="_1XmrCc _2zJ7Pb" width="24" height="24"/>
+    <div className="profile-page">
+      <aside className="sidebar">
+        <ul>
+          <li>My Account</li>
+          <li>My Orders</li>
+          <li>Setting</li>
+          <li onClick={handleLogout}>Logout</li>
+        </ul>
+      </aside>
+      {user && (
+        <section className="profile-content">
+          <div className="account">
+            <h2>Welcome,{userDetail?.name}👋</h2>
+            <p>
+              <strong>Name :</strong>
+              {userDetail?.name}
+            </p>
+            <p>
+              <strong>Email:</strong>
+              {userDetail?.email}
+            </p>
+            <p>
+              <strong>Password:</strong>
+              {userDetail?.password}
+            </p>
+            <p>
+              <strong>Phone:</strong>
+              {userDetail?.number}
+            </p>
+            <p>
+              <strong>Address:</strong>Bhagyashree Colony,Vijay Nagar Indore
+              Madhya Pradesh
+            </p>
+            <button className="edit-profile">Edit Profile</button>
           </div>
-        {user ? (
-            <div >
-                <p><strong>Name:</strong> {user.name}</p>
-                <p><strong>Email:</strong> {user.email}</p>
-            </div>
-        ) : (
-            <div  >
-            <p>No user information available</p>
-            </div>
-        )}
-        </div>
+
+          <div className="profile-photo">
+            <img src="/profile.png" alt="" />
+          </div>
+        </section>
+      )}
     </div>
-  )
+  );
 }
 
 export default Profile;
-
-

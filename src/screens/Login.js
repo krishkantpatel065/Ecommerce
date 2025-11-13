@@ -1,18 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import "../styleFolder/loginStyle.css";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState({});
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const [error, setError] = useState({});
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  let number = "91310";
+  for (let i = 1; i <= 5; i++) {
+    number += Math.floor(Math.random() * 10);
+  }
+  console.log(number);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +44,12 @@ function Login() {
 
     setError(formsError);
     if (Object.keys(formsError).length === 0) {
-      login({ name: formData.name, email: formData.email });
+      login({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        number: number,
+      });
       alert("Login Successful");
       navigate("/");
     }

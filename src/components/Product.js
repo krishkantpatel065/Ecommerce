@@ -1,12 +1,12 @@
-import AllProduct from '../screens/AllProduct'
+import AllProduct from "../screens/AllProduct";
+import Spinner from "./Spinner";
 
 function Product() {
   return (
-    <div>
-      <AllProduct isShow={true}/>
+    <div style={{position:"relative"}}>
+      <AllProduct isShow={true} />
     </div>
-  )
+  );
 }
 
-export default Product
-
+export default Product;

@@ -9,7 +9,7 @@ import Profile from "./screens/profile";
 import SignUp from "./screens/SignUp";
 import Order from "./screens/order";
 import { AuthProvider } from "./context/AuthContext";
-import Counter from "./components/Counter"
+import Counter from "./components/Counter";
 
 function App() {
   return (

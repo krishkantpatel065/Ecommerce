@@ -1,49 +1,40 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import AllProduct from "../screens/AllProduct";
 import SlidingImage from "../components/SlidingImage";
 import DeliveryReturn from "../components/DeliveryRetrun";
 import SmallImage from "../components/Smallimage";
+import Footer from "../components/Footer";
 import "../styleFolder/Home.css";
+import Spinner from "../components/Spinner";
 
 function Home() {
-  const [user, setUser] = useState(null);
-
+  const [userr, setUserr] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
-
   useEffect(() => {
     const displayUser = storedUser ? storedUser?.[0] : null;
-    setUser(displayUser);
+    setUserr(displayUser);
   }, []);
 
   return (
-    <div className="home-container">
-      <div className="home-content">
-        {/* {user ? (
-            <h1>
-              Welcome <span className="highlight">{user.name}</span> to
-              E-Commerce Site!
-            </h1>
-          ) : (
-            <h3>Welcome to our E-Commerce site 🛍️</h3>
-          )}
-          <p>
-            {user
-              ? "Check out the latest deals and best-selling items!"
-              : "Sign up or log in to explore amazing products."}
-          </p> */}
-        <SlidingImage />
-        <SmallImage />
-        <DeliveryReturn />
-        <div className="saleIsLive">
-          <a href="" className="">
-            <h3>
-              <span className="sale">
+    <>
+      <div className="home-container">
+        <div className="home-content">
+          <SlidingImage />
+          <SmallImage />
+          <DeliveryReturn />
+          <div className="saleIsLive">
+            <div className="anchor">
+              <h3 className="headingh3 ">
                 Sale
-                <b> Is Live</b>
-              </span>
-            </h3>
-            <b>
+                <span className="sale">
+                  {" "}
+                  <b>Is Live</b>
+                </span>
+              </h3>
+            </div>
+
+            <NavLink to="product" className="viewAll">
               View All
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,37 +50,22 @@ function Home() {
                   fill="#2983d8ff"
                 ></path>
               </svg>
-            </b>
-          </a>
-        </div>
-        <section>
-          <div></div>
-        </section>
-        {/* <h3 style={{ textAlign: "center" }}>✨ Featured Products</h3> */}
-        <div>
-          <div className="gridProduct">
-            <AllProduct isShow={false} />
+            </NavLink>
           </div>
-          <Link to="/product" className="viewMore">
-            View More
-          </Link>
+          {/* <h3 style={{ textAlign: "left" }}>✨ Featured Products</h3> */}
+          <AllProduct isShow={false} />
+          {userr && (
+            <section className="continue-Shopping ">
+              <h3>
+                🛒 Continue Shopping,
+                <span className="userName">{userr.name.split(" ")[0]}</span> ?
+              </h3>
+            </section>
+          )}
         </div>
-        {user && (
-          <section className="continue-Shopping ">
-            <h3>
-              🛒 Continue Shopping,
-              <span className="userName">{user.name.split(" ")[0]}</span> ?
-            </h3>
-            <Link className="browseAll" to="/paginatedProducts">
-              Browse All Products{" "}
-            </Link>
-          </section>
-        )}
       </div>
-      <footer className="footer">
-        <p>© 2025 Exclusive. All rights reserved.</p>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 }
 

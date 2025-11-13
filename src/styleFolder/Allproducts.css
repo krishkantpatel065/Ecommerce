@@ -1,14 +1,78 @@
-.container {
-  text-align: center;
-}
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 20px;
-  /* align-items: center; */
-  margin-top: 12px;
+  margin: 20px 49px 10px;
+}
+.card {
+  background-color: #ede8e8;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+.card img {
+  width: 100px;
+  height: 130px;
+ object-position: center;
+ margin: 10px;
+ object-fit: contain;
+}
+.contents {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  font-size: 15px;
+  font-weight: bold;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 20px;
+}
+.description {
+  font-size: 12px;
+  color: #666;
+  white-space: wrap;
+  overflow: hidden;
+  
+  height: 30px;
+}
+.price {
+  font-size: 15px;
+  font-weight: bold;
+} 
+ 
+
+.addCart{
+  padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #a75e5e;
+    color: #100e0e;
+    border: none;
+}
+.GoToCart{
+  padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #f08102;
+    color: #100e0e;
+    border: none;
 }
 .page-btn {
   margin: 5px;
@@ -16,45 +80,4 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-}
-.productItem {
-  border: 1px solid #8c8cc7;
-  border-radius: 10px;
-  padding: 5px;
-  width: 200px;
-  box-shadow: 0px 0px 6px 0px #353131;
-}
-
-.productItem img {
-  width: 50px;
-  height: 60px;
-  object-fit: contain;
-}
-.productItem p {
-  color: green;
-}
-.productItem h4 {
-  text-wrap: nowrap;
-  overflow: hidden;
-  height: 25px;
-
-  text-overflow: ellipsis;
-}
-
-.cart-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.add-to-cart {
-  width: 80%;
-  font-family: system-ui;
-  background: #1a2024;
-  border: 1px solid #1a2024;
-  padding: 10px;
-  border-radius: 10px !important;
-  color: #fff;
-  font-size: 14px !important;
-  font-weight: 500 !important;
 }

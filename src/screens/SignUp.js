@@ -7,19 +7,19 @@ function SignUp() {
   // const [password, setPassword] = useState("");
   // const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [signUpform,setSignUpform] = useState({
-    name:"",
-    email:"",
-    password:""
-  })
-  const{user,signup} = useContext(AuthContext)
+  const [signUpform, setSignUpform] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { user, signup } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleChange = (e) =>{
-    const {name,value} = e.target;
-    setSignUpform({...signUpform,[name] : value});
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSignUpform({ ...signUpform, [name]: value });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!signUpform.email || !signUpform.password || !signUpform.name) {
@@ -36,7 +36,11 @@ function SignUp() {
     // const newUser = { name, email, password };
     // user.push(newUser);
     // localStorage.setItem("user", JSON.stringify(user));
-    signup({name: signUpform.name,email:signUpform.email,password:signUpform.password})
+    signup({
+      name: signUpform.name,
+      email: signUpform.email,
+      password: signUpform.password,
+    });
     navigate("/");
     alert("Sign Up Successful");
     console.log("signnnn");
@@ -84,10 +88,8 @@ function SignUp() {
             Sign Up
           </button>
           {error && <p className="error">{error}</p>}
-      
         </form>
       </div>
-      
     </div>
   );
 }

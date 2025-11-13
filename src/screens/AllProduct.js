@@ -1,25 +1,29 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import "../styleFolder/Allproducts.css";
-import { useDispatch } from "react-redux";
-import { addItem } from "../redux/slice";
 import Pagination from "../components/Pagination";
 import { AuthContext } from "../context/AuthContext";
+import Spinner from "../components/Spinner";
+import { fetchProducts } from "../redux/ProductSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../redux/slice";
+import { useNavigate } from "react-router-dom";
 
-function AllProduct({ isShow }) {
+function AllProduct({ top, isShow }) {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-   const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
+  const Allproducts = useSelector((state) => state.products.items || []);
+  const cartIt = useSelector((state) => state.cart.items);
+  console.log(cartIt);
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        console.log(data);
-      })
-      .catch((err) => console.error("Error fetching products:", err));
+    dispatch(fetchProducts());
+    setProducts(Allproducts);
   }, []);
+  const gotoCart = () =>{
+    navigate("/order")
+  }
 
   const PerPage = 15;
   const numberOfPages = Math.ceil(products.length / PerPage);
@@ -28,44 +32,52 @@ function AllProduct({ isShow }) {
   const currentProducts = isShow
     ? products.slice(First, Last)
     : products.slice(0, 5);
+  console.log(currentProducts);
 
   return (
-    <div className="container">
-      <div className="products">
-        {currentProducts.length > 0 ? (
-          currentProducts.map((product) => (
-            <div className="productItem " key={product.id}>
-              <div className="product-img">
-                <img src={product.image} alt={product.title} />
-              </div>
-              <div className="info-div">
-                <div className="product-title">
-                  <h4>{product.title}</h4>
-                </div>
-                <div className="product-price">
-                  <p>₹{product.price}</p>
-                  <p>⭐{product?.rating?.rate}</p>
-                </div>
+    <div className="grid">
+      {currentProducts?.length > 0 ? (
+        currentProducts.map((item => 
+          <div className="card" key={item.id}>
+            <img src={item.image} alt="" />
+            <div className="contents">
+              <div className="title">{item.title}</div>
+              <div className="description">{item.description}</div>
+              <div className="price">₹{item.price}</div>
 
-                <div className="cart-btn">
-                  <button
-                    className="add-to-cart"
-                    onClick={() =>
-                      dispatch(addItem("Shoes")  )
-                    }
-                  >
-                    Add To Cart
-                  </button>
-                  {/* <button onClick={() => dispatch(Detail({ id: 1, name: "Shoes", price: 999 }))}>Add to Cart</button> */}
-                </div>
-              </div>
+              {cartIt.find((carts) => carts.id === item.id) ? (
+                <button
+                  className="GoToCart"
+                  onClick={ gotoCart}
+                >
+                  Go To Cart
+                </button>
+                
+              ) : (
+                <button
+                  className="addCart"
+                  onClick={() => dispatch(addItem(item))}
+                >
+                  Add To Cart
+                </button>
+              )}
             </div>
-          ))
-        ) : (
-          <p>Loading products...</p>
-        )}
-      </div>
-      {isShow && (
+          </div>
+        ))
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignTracks: "center",
+            position: "relative",
+          }}
+        >
+          <Spinner top={"-30px"} />
+        </div>
+      )}
+
+      {isShow && currentProducts.length > 0 && (
         <Pagination
           numberOfPages={numberOfPages}
           page={page}
@@ -75,5 +87,4 @@ function AllProduct({ isShow }) {
     </div>
   );
 }
-
 export default AllProduct;

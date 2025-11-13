@@ -12,7 +12,7 @@
 .slides {
   display: flex;
   transition: transform 0.8s cubic-bezier(0.4, 0, 1, 1);
-  transform: translate(-100 * current);
+  
 }
 
 .slide {
@@ -30,7 +30,7 @@
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   display: flex;
   gap: 8px;
 }
@@ -49,22 +49,25 @@
   opacity: 1;
   background-color: #d30a0a;
 }
+
 @media (max-width: 768px) {
   .slides {
-    height: 70vh;
+    height: 100vh;
   }
   .slider {
     /* height: 225px; */
-    height: 133px;
+    height: 100vh;
   }
   .slide img {
-    height: 30%;
+    height: 50%;
   }
 }
 
 @media (max-width: 900px) {
   .slider {
-    /* height: 225px; */
-    height: 133px;
+    height: 50vh;
+  }
+  .mainDiv {
+    height: 10px;
   }
 }

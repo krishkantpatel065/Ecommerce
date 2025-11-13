@@ -3,47 +3,57 @@
   transform: translateY(-5px);
 }
 .home-content {
-  text-align: center;
+  /* text-align: center; */
+
 }
 .saleIsLive {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: 100%;
   margin-left: 50px;
   margin-right: 50px;
-  text-align: centre;
+  height: 50px;
 }
-.saleIsLive a {
+.anchor {
+  position: relative;
+}
+.anchor h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.headingh3 span::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  display: block;
+  background: #f30909;
+  position: absolute;
+  bottom: 25px;
+  right: 2px;
+}
+.view {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  text-decoration: none;
-  background: transparent;
+  gap: 5px;
 }
-.sale {
+.viewAll{
+  color: #2F5B96;
+    font-size: 18px;
+    border-radius: 20px;
     display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #1a2024;
-  font-size: 24px;
-  font-family: Metrophobic, sans-serif;
-  margin: 0px 0px 12px 12px;
+    align-items: center;
+    gap: 3px;
+    font-weight: bold;
+    text-decoration: none;
 }
-.sale b {
-  color: #2f5b96;
-  font-size: 14px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  font-weight: bold;
-  font-family: Metrophobic, sans-serif;
-}
+
 /* .gridProduct {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
   gap: 8px;
-  align-content: center;
-  align-items: center;
+  
 } */
 .viewMore {
   text-decoration: none;
@@ -61,6 +71,7 @@
 }
 .continue-Shopping {
   text-align: center;
+  margin-top: 55px;
 }
 .continue-Shopping h3 {
   color: "#333";
@@ -68,9 +79,5 @@
 .userName {
   color: rgb(230, 144, 82);
   font-family: "Segoe UI", sans-serif;
-  font-weight: bolder;
-}
-.footer {
-  text-align: center;
-  font-family: Poppins;
+  font-weight: 500;
 }

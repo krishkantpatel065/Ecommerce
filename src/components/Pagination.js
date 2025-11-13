@@ -14,7 +14,7 @@ function Pagination({ numberOfPages, page, setPage }) {
     );
   }
   return (
-    <div>
+    <div style={{position:"relative"}}>
       <div className="buttonDiv">
         <button
           className="previous"

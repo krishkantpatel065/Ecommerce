@@ -2,16 +2,17 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
 }
 .carts {
-  /* position: relative; */
-  font-size: 20px;
+  position: relative;
+  font-size: 0px;
   cursor: pointer;
   display: flex;
   justify-content: center;
-
   align-items: center;
 }
+
 .carts-icon {
   width: 50px;
   height: 24px;
@@ -21,25 +22,38 @@ body {
 .carts-count {
   position: absolute;
   font-size: 15px;
-  top: 56px;
-
-  right: 84px;
-  background: #e63946;
-  border-radius: 50%;
+  top: -6px;
+  right: -8px;
+  background: #f70618;
+  border-radius: 106px;
   width: 18px;
   text-align: center;
   color: white;
-  height: 23px;
+  height: 18px;
 }
+.carts-count span {
+  font-size: 11px;
+  text-align: center;
+  margin: auto;
+  height: auto;
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  right: 0px;
+  font-family: monospace;
+}
+
 @media (max-width: 768px) {
   .carts-count {
     position: absolute;
-    top: 56px;
-    right: 95px;
-
-    font-size: 15px;
+    bottom: 30px;
+    font-size: px;
+    width: 20px;
+    height: 20px;
   }
-  .carts-icon{
-    margin: 10px;
+  .carts-count span {
+    margin: auto;
+    font-size: 14px;
+    text-align: center;
   }
 }
