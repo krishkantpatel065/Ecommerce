@@ -66,6 +66,9 @@
   color: #000;
 }
 @media (max-width:768px) {
+  .mainDiv{
+    width: 100%;
+  }
   .innerDiv{
     display: flex;
     flex-direction: column;

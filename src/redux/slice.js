@@ -2,11 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  value: 0,
   items: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
-  // items:[]
+    
 };
 const addToCart = createSlice({
   name: "cart",
@@ -14,6 +13,7 @@ const addToCart = createSlice({
   reducers: {
     //actions
     addItem: (state, action) => {
+      // console.log(state.items);
       const exiting = state.items.find(
         (item) => String(item.id) === String(action.payload.id)
       );
@@ -43,6 +43,7 @@ const addToCart = createSlice({
       state.items = [];
       localStorage.removeItem("cart");
     },
+   
   },
 });
 

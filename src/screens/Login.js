@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import "../styleFolder/loginStyle.css";
+import { toast } from "react-toastify";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,20 +11,16 @@ function Login() {
     name: "",
     email: "",
     password: "",
+    number: "",
   });
+  const newError = {};
   const navigate = useNavigate();
-  let number = "91310";
-  for (let i = 1; i <= 5; i++) {
-    number += Math.floor(Math.random() * 10);
-  }
-  console.log(number);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setError({ ...error, [name]: "" });
   };
   const validate = () => {
-    const newError = {};
     if (!formData.name.trim()) newError.name = "Name is required";
     if (!formData.email.trim()) newError.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
@@ -40,7 +36,6 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formsError = validate();
-    // const { name, email, password } = formData;
 
     setError(formsError);
     if (Object.keys(formsError).length === 0) {
@@ -48,9 +43,9 @@ function Login() {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        number: number,
+        number: "",
       });
-      alert("Login Successful");
+      toast.success("Login Successful");
       navigate("/");
     }
   };
@@ -58,56 +53,57 @@ function Login() {
     console.log("check", showPassword.type === "password");
     setShowPassword((prev) => !prev);
   };
-  return (
-    <div className="login-page">
-      <div className="login-card">
-        <h2 className="login-title">Welcome Back 👋</h2>
-        <p className="login-subtitle">Login to continue shopping</p>
+  let save = JSON.parse(localStorage.getItem("user"));
+  console.log(save);
 
-        <form onSubmit={handleSubmit} className="login-form">
+  return (
+    <div className="flex py-[56px] w-full">
+      <div className="w-[50%]">
+        <img
+          src="/assets/login.png"
+          alt="login"
+          className="w-[650px] h-[420px] "
+        />
+      </div>
+      <div className="flex flex-col gap-2 p-10 w-[50%] ">
+        <div>
+          <h1 className="leading-4 text-2xl tracking-wide mb-5 font-medium">
+            Log in to Exclusive
+          </h1>
+          <p className="text-sm">Enter your detail below</p>
+        </div>
+        <div className="flex flex-col  gap-2">
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
-            className="login-input"
+            placeholder="Enter your name"
+            className="text-[black] text-sm mt-1 border-b border-[#7f7f7f] mb-1  outline-none w-[75%] "
           />
-          {error.name && <p className="login-error">{error.name}</p>}
+          {error.name && (
+            <p className="mt-[-7px] text-[12px] text-red-600">{error.name}</p>
+          )}
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
-            className="login-input"
+            placeholder="Enter Your Email"
+            className="text-[black] text-sm border-b border-[#7f7f7f] w-[75%] mb-1 outline-none "
           />
-          {error.email && <p className="login-error">{error.email}</p>}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "308px",
-              border: "1.5px solid rgb(207, 216, 220)",
-              borderRadius: "8px",
-              padding: "8px 5px",
-            }}
-          >
+          {error.email && (
+            <p className="mt-[-7px] text-[12px] text-red-600">{error.email}</p>
+          )}
+          <div className="flex justify-between gap-0  border-b border-[#7f7f7f] w-[75%]">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                width: "100%",
-              }}
-              // className={`login-input ${error.password ? "input-error" : ""}`}
+              placeholder="Enter Password"
+              className="text-[black] text-sm w-[75%]  outline-none "
             />
-
             <button
               onClick={togglePassword}
               style={{
@@ -119,22 +115,30 @@ function Login() {
               {showPassword ? "🙈" : "👁️"}
             </button>
           </div>
-          {error.password && <p className="login-error">{error.password}</p>}
-
-          <button type="submit" className="login-btn">
-            Login
+          {error.password && (
+            <p className="mt-[-7px] text-[12px] text-red-600">{error.password}</p>
+          )}
+        </div>
+        <div className="flex justify-between items-center w-[75%]">
+          <button
+            className="py-1 px-5 text-white rounded-sm bg-red-500"
+            onClick={handleSubmit}
+          >
+            Log In
           </button>
-
-          <p className="login-footer">
-            Don’t have an account?
-            <span onClick={() => navigate("/signup")} className="signup-link">
-              Sign Up
-            </span>
-          </p>
-        </form>
+          <Link className="text-blue-800">Forget Password?</Link>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Login;
+{
+  /* <p className="login-footer">
+    //         Don’t have an account?
+    //         <span onClick={() => navigate("/signup")} className="signup-link">
+    //           Create Account
+    //         </span>
+    //       </p> */
+}

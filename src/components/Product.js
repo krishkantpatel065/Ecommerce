@@ -1,11 +1,13 @@
 import AllProduct from "../screens/AllProduct";
-import Spinner from "./Spinner";
 
-function Product() {
+
+function Product({ searchTerm }) {
   return (
-    <div style={{position:"relative"}}>
-      <AllProduct isShow={true} />
-    </div>
+    <>
+      <div style={{ position: "relative" }}>
+        <AllProduct filter={searchTerm} Showloader={true} isShow={true} />
+      </div>
+    </>
   );
 }
 

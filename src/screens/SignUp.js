@@ -3,95 +3,156 @@ import { useNavigate } from "react-router-dom";
 import "../styleFolder/signup.css";
 import { AuthContext } from "../context/AuthContext";
 function SignUp() {
-  // const [name, setName] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const { signup } = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const [signUpform, setSignUpform] = useState({
     name: "",
     email: "",
     password: "",
+    number: "",
   });
-  const { user, signup } = useContext(AuthContext);
-
-  const navigate = useNavigate();
+  let save = JSON.parse(localStorage.getItem("user"));
+  console.log(save);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignUpform({ ...signUpform, [name]: value });
   };
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+  const FindError = () => {
+    const errors = {};
+
+    if (!signUpform.name) {
+      errors.name = "Name is required";
+    }
+    if (!signUpform.email) {
+      errors.email = "Email is not valid";
+    }
+    if (!signUpform.password) {
+      errors.password = "Password is not valid";
+    }
+    if (!signUpform.number) {
+      errors.number = "Number is not valid";
+    }
+    return errors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!signUpform.email || !signUpform.password || !signUpform.name) {
-      alert("Please fill all fields");
-      setError("Please fill all fields");
-      return;
-    }
-    const user = JSON.parse(localStorage.getItem("user")) || [];
-    if (user.find((u) => u.email === signUpform.email)) {
-      setError("User already exists");
+
+    const errrobj = FindError();
+    setError(errrobj);
+
+    if (Object.keys(errrobj).length > 0) {
       return;
     }
 
-    // const newUser = { name, email, password };
-    // user.push(newUser);
-    // localStorage.setItem("user", JSON.stringify(user));
     signup({
       name: signUpform.name,
       email: signUpform.email,
       password: signUpform.password,
+      number: signUpform.number,
     });
-    navigate("/");
+
     alert("Sign Up Successful");
-    console.log("signnnn");
+    navigate("/");
   };
 
   return (
-    <div className="signup-page">
-      <div className="signup-card">
-        <form onSubmit={handleSubmit} className="signUp-form">
-          <h2>Sign Up Page</h2>
-          <label htmlFor="name">Name:</label>
+    <div className="singup-page">
+      <div className="singup-card">
+        <h2 className="singup-title">Create Account </h2>
+
+        <form onSubmit={handleSubmit} className="singup-form">
           <input
             type="text"
-            id="name"
-            placeholder="Enter your name"
-            value={signUpform.name}
-            className="signup-input"
-            onChange={handleChange}
             name="name"
+            placeholder="Full Name"
+            value={signUpform.name}
+            onChange={handleChange}
+            className="singup-input"
           />
-
-          <label htmlFor="email">Email:</label>
+          {error.name && <p className="singup-error">{error.name}</p>}
           <input
-            className="signup-input"
             type="email"
-            id="email"
             name="email"
-            placeholder="Enter your email"
+            placeholder="Email Address"
             value={signUpform.email}
             onChange={handleChange}
+            className="singup-input"
           />
-
-          <label htmlFor="password">Password:</label>
+          {error.email && <p className="singup-error">{error.email}</p>}
           <input
-            className="signup-input"
             type="password"
-            id="password"
             name="password"
-            placeholder="Enter your password"
+            placeholder="Password"
             value={signUpform.password}
             onChange={handleChange}
+            className="singup-input"
           />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "308px",
+              border: "1.5px solid rgb(207, 216, 220)",
+              borderRadius: "8px",
+              padding: "8px 5px",
+            }}
+          >
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Conform Password"
+              value={signUpform.password}
+              onChange={handleChange}
+              style={{
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                width: "100%",
+              }}
+            />
 
-          <button type="submit" className="signupButton">
+            <button
+              onClick={togglePassword}
+              style={{
+                border: "none",
+                outline: "none",
+                background: "transparent",
+              }}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
+          <input
+            type="number"
+            name="number"
+            placeholder="Enter Number"
+            value={signUpform.number}
+            onChange={handleChange}
+            className="singup-input"
+          />
+          {error.number && <p className="singup-error">{error.number}</p>}
+
+          <button type="submit" className="singup-btn">
             Sign Up
           </button>
-          {error && <p className="error">{error}</p>}
+
+          <p className="singup-footer">
+            Already have an account?
+            <span onClick={() => navigate("/login")} className="login-link">
+              Login
+            </span>
+          </p>
         </form>
       </div>
     </div>
   );
 }
-
 export default SignUp;

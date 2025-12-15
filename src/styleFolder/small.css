@@ -2,3 +2,8 @@
   height: 22px;
   width: 100%;
 }
+@media (max-width:768px) {
+  .smallImage{
+    width: 100%;
+  }
+}

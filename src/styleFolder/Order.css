@@ -1,15 +1,36 @@
-.ListDiv {
-  text-align: center;
+
+.order-section {
+  margin-top: 25px;
 }
-ul li {
-  list-style: none;
+.order-section label {
+  margin: 10px;
 }
-.Clearbutton {
-  font-size: 14px;
-  font-weight: bolder;
-  border-radius: 16px;
-  background: lightblue;
-  border: 2px solid beige;
-  outline: none;
-  padding: 15px;
+.payment-section {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.place-order-btn {
+  background-color: #ff3f6c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+
+.place-order-btn:hover {
+  background-color: #e3345b;
+  transform: scale(1.05);
 }

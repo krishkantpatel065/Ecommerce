@@ -3,12 +3,12 @@ import "../styleFolder/AddToCarts.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 function AddToCart() {
-  const cartIt = useSelector((state) => state.cart.items);
+  
   // const cartIt = useSelector((state) => state.cart.items);
   //for one only
   //cart is equal to a cart in store
   const itemCount = useSelector((state) => state.cart.items?.length || 0);
-  console.log(cartIt);
+
   return (
     <div className="carts">
       <NavLink to="/order">

@@ -3,24 +3,20 @@ import styled from "styled-components";
 import "../styleFolder/spinner.css";
 const Loadder = styled.div`
   position: absolute;
-  top: -7px;
+  top: 70px;
   right: 0%;
   left: 48%;
-  border: 5px solid #c7c3c3;
+  border: 5px dotted gray;
   border-radius: 50%;
-  border-top: 5px solid #0599fc;
+  border-top: 5px dotted red;
   width: 50px;
   height: 50px;
-  animation: spin 1s linear infinite;
+  animation: spin 2s linear infinite;
   margin-bottom: 20px;
 `;
 
-function Spinner({ top }) {
-  return (
-   
-      <Loadder top={top} />
-    
-  );
+function Spinner({ loader }) {
+  return loader ? <Loadder /> : null;
 }
 
 export default Spinner;

@@ -2,52 +2,10 @@
   background-color: #ffffff;
   transform: translateY(-5px);
 }
-.home-content {
+/* .home-content {
   /* text-align: center; */
 
-}
-.saleIsLive {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 100%;
-  margin-left: 50px;
-  margin-right: 50px;
-  height: 50px;
-}
-.anchor {
-  position: relative;
-}
-.anchor h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-.headingh3 span::after {
-  content: "";
-  width: 24px;
-  height: 2px;
-  display: block;
-  background: #f30909;
-  position: absolute;
-  bottom: 25px;
-  right: 2px;
-}
-.view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-.viewAll{
-  color: #2F5B96;
-    font-size: 18px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    font-weight: bold;
-    text-decoration: none;
-}
+/* } */
 
 /* .gridProduct {
   display: grid;
@@ -80,4 +38,21 @@
   color: rgb(230, 144, 82);
   font-family: "Segoe UI", sans-serif;
   font-weight: 500;
+}
+.nirvana-image {
+  border-radius: 14px;
+  /* width: 100%; */
+  text-align: center;
+}
+.nirvana-image img{
+  width: 93%;
+    border-radius: 12px;
+
+}
+@media (max-width:768px) {
+  .nirvana-image img{
+  width: 100%;
+    padding: 0 45px;
+
+}
 }

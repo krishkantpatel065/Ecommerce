@@ -1,4 +1,3 @@
-
 .grid {
   position: relative;
   display: grid;
@@ -7,7 +6,7 @@
   margin: 20px 49px 10px;
 }
 .card {
-  background-color: #ede8e8;
+  background-color: #f5f5f5;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -22,9 +21,9 @@
 .card img {
   width: 100px;
   height: 130px;
- object-position: center;
- margin: 10px;
- object-fit: contain;
+  object-position: center;
+  margin: 10px;
+  object-fit: contain;
 }
 .contents {
   padding: 16px;
@@ -33,11 +32,12 @@
   gap: 8px;
   align-items: center;
   justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .title {
   font-size: 15px;
   font-weight: bold;
-  
+
   overflow: hidden;
   text-overflow: ellipsis;
   height: 20px;
@@ -47,32 +47,39 @@
   color: #666;
   white-space: wrap;
   overflow: hidden;
-  
+
   height: 30px;
 }
 .price {
-  font-size: 15px;
-  font-weight: bold;
-} 
- 
-
-.addCart{
-  padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    background: #a75e5e;
-    color: #100e0e;
-    border: none;
+  font-weight: 600;
+  font-size: 16px;
+  color: darkgreen;
+  font-family: sans-serif;
 }
-.GoToCart{
+
+.addCart {
   padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    background: #f08102;
-    color: #100e0e;
-    border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #81a1dd;
+  color: #100e0e;
+  border: none;
+  width: 100%;
+  font-family: system-ui;
+cursor:pointer;
+}
+.GoToCart {
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #f08102;
+  color: #100e0e;
+  border: none;
+  width: 100%;
+  font-family: system-ui;
+  cursor:pointer;
 }
 .page-btn {
   margin: 5px;
@@ -80,4 +87,8 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+a{
+  text-decoration: none;
+  color: #100e0e;
 }
