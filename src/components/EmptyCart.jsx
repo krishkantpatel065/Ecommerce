@@ -17,7 +17,7 @@ const EmptyCart = () => {
       <div className=" text-sm mt-3 font-normal text-black">
         Add item to it now.
       </div>
-      <button className="mt-3 py-2 px-6 bg-blue-600 rounded-md">
+      <button className="mt-3 py-2 px-6 bg-red-600 rounded-md">
         <Link to="/product" style={{ textDecoration: "none", color: "white" }}>
           Shop Now
         </Link>

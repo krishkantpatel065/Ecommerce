@@ -5,7 +5,7 @@ const initialState = {
   items: localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
     : [],
-    
+  wish: localStorage.getItem("wish") ? JSON.parse(localStorage.getItem("wish")) : []
 };
 const addToCart = createSlice({
   name: "cart",
@@ -43,9 +43,26 @@ const addToCart = createSlice({
       state.items = [];
       localStorage.removeItem("cart");
     },
-   
+    addWish: (state, action) => {
+      if (Array.isArray(action.payload)) {
+        state.wish.push(...action.payload);
+      }else{
+         state.wish.push(action.payload )
+      }
+     
+      localStorage.setItem("wish", JSON.stringify(state.wish));
+      // alert("rfe")
+    },
+    removeWish:(state,action)=>{
+      state.wish = state.wish.filter((i)=>i.id !== action.payload);
+      localStorage.setItem("wish",JSON.stringify(state.wish))
+    },
+    clearWish:(state,action)=>{
+      state.wish=[];
+      localStorage.removeItem("wish")
+    }
   },
 });
 
-export const { addItem, removeItem, clearCart } = addToCart.actions;
+export const { addItem, removeItem, clearWish, clearCart, addWish,removeWish } = addToCart.actions;
 export default addToCart.reducer;

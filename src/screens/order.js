@@ -7,12 +7,11 @@ import Subtotal from "../components/Subtotal";
 import EmptyCart from "../components/EmptyCart";
 function Order() {
   const dispatch = useDispatch();
-  
-  
-  const cartItems = useSelector((state) => state.cart.items);
-  // const {items} = useSelector((state) => state.cart);
 
-  
+  const cartItems = useSelector((state) => state.cart.items);
+  const { items } = useSelector((state) => state.cart);
+  // console.log(items);
+
   function trimText(text, maxLength = 100) {
     if (!text) return "";
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
@@ -24,9 +23,19 @@ function Order() {
   return (
     <>
       <div className="p-10 ">
-        <div className="mt-5 px-10">Home/Cart</div>
+        <div className="mt- px-10">
+          {" "}
+          <h3 className="text-gray-700 text-sm">
+            <Link to="/">Home</Link>
+            <span className="text-semi-bold mx-1">/</span>
+            <Link className="text-bold text-black">Cart</Link>
+            {/* <span className="text-normal mx-1">/</span>
+             */}
+          </h3>
+        </div>
+        <div className="mt-5 px-10">Total items ({cartItems.length})</div>
         {cartItems.length > 0 ? (
-          <div className="px-[40px] py-5 flex flex-col w-full mt-5">
+          <div className="px-[40px] py-5 flex flex-col w-full mt-2">
             <div className="mb-10">
               <div className="mb-4">
                 <div className="flex justify-between shadow-md px-10 py-3">
@@ -35,10 +44,13 @@ function Order() {
                   <div>Quantity</div>
                   <div>Subtotal</div>
                 </div>
-                <div className="h-[100px] overflow-y-auto" id="scroll">
+                <div className="h-[200px] overflow-y-auto" id="scroll">
                   {cartItems.length > 0 &&
                     cartItems.map((item) => (
-                      <div className="flex justify-between items-center shadow-md px-10 py-4 rounded-sm w-full mt-5 mb-5">
+                      <div
+                        key={item.id}
+                        className="flex justify-between items-center shadow-md px-10 py-4 rounded-sm w-full mt-5 mb-5"
+                      >
                         <div className="flex items-center gap-2 w-[100px]">
                           <img
                             src={item.image}
@@ -81,15 +93,18 @@ function Order() {
                       Return To Cart
                     </button>
                   </Link>
-                  <button className="px-5 py-2 bg-red-500 text-[12px] text-white rounded-sm">
-                    Update Cart
+                  <button
+                    className="px-5 py-2 bg-red-500 text-[12px] text-white rounded-sm"
+                    onClick={() => dispatch(clearCart())}
+                  >
+                    Clear Cart
                   </button>
                 </div>
               </div>
             </div>
-            <div className="flex items-start justify-between">
-              <ApplyCoupon  />
-              <Subtotal total={Total}   show={true} />
+            <div className="flex flex-col items-start justify-between md:flex-row">
+              <ApplyCoupon />
+              <Subtotal total={Total} showTotal={true} />
             </div>
           </div>
         ) : (

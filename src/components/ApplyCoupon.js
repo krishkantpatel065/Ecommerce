@@ -8,13 +8,11 @@ const ApplyCoupon = () => {
   const dispatch = useDispatch();
   const { message, type } = useSelector((state) => state.coupon);
   const state = useSelector((state) => state.coupon);
-console.log(state);
 
   const handleCoupon = () => {
     dispatch(applyCoupon(couponCode));
-    console.log(message);
-    console.log(type);
-    
+    // console.log(message);
+    // console.log(type);
   };
   useEffect(() => {
     if (!message) {
@@ -43,7 +41,7 @@ console.log(state);
   }, [type, message]);
 
   return (
-    <div className="flex  justify-between items-start">
+    <div className="flex justify-between items-start w-full flex-col md:flex ">
       <div className="flex gap-5">
         <input
           type="text"

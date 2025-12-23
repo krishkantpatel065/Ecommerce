@@ -1,8 +1,9 @@
 .buttonDiv {
   position: fixed;
-  bottom: 69px;
+  bottom: 10px;
   top: unset;
-  left: 50%;
+  /* left: 30%; */
+  right: 0;
   transform: translateX(-50%);
   border-radius: 8px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.09);

@@ -6,7 +6,7 @@ function PageNotFound() {
   }
   return (
     <div style={style}>
-     <img src="https://admiral.digital/wp-content/uploads/2023/08/404_page-not-found.png" alt="404" width={590} />
+     <img src="/assets/404.webp" alt="404" width={590} />
     </div>
   )
 }

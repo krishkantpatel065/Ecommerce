@@ -4,3 +4,9 @@
 #scroll::-webkit-scrollbar{
     display: none;
 }
+#number::-webkit-inner-spin-button{
+    display: none;
+}
+body{
+    margin: 0;
+}

@@ -7,7 +7,7 @@ function Pagination({ numberOfPages, page, setPage }) {
         key={i}
         className="page-btn"
         onClick={() => setPage(i)}
-        style={{ backgroundColor: page === i ? "brown" : "#eee" }}
+        style={{ backgroundColor: page === i ? "red" : "#eee" }}
       >
         {i}
       </button>
@@ -15,7 +15,7 @@ function Pagination({ numberOfPages, page, setPage }) {
   }
   return (
     <div style={{ position: "relative" }}>
-      <div className="buttonDiv">
+      <div className="fixed">
         <button
           className="previous"
           onClick={() => setPage(page - 1)}

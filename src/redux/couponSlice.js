@@ -10,8 +10,8 @@ const couponSlice = createSlice({
   reducers: {
     applyCoupon(state, action) {
       const code = action.payload;
-      console.log(code);
-      
+      // console.log(code);
+
       if (!code) {
         state.type = "error";
         state.message = "Enter Coupon Code";
@@ -26,18 +26,17 @@ const couponSlice = createSlice({
         state.applied = true;
         state.type = "success";
         state.message = "Coupon Applied | You save ₹50  ";
-      } 
-      else{
-        state.type="error";
-        state.message="Invalid Coupon"
+      } else {
+        state.type = "error";
+        state.message = "Invalid Coupon";
       }
     },
-    resetCoupon(state){
-        state.applied=false;
-        state.type="";
-        state.message=""
-    }
+    resetCoupon(state) {
+      state.applied = false;
+      state.type = "";
+      state.message = "";
+    },
   },
 });
-export const{applyCoupon,resetCoupon} = couponSlice.actions;
+export const { applyCoupon, resetCoupon } = couponSlice.actions;
 export default couponSlice.reducer;

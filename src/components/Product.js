@@ -5,7 +5,7 @@ function Product({ searchTerm }) {
   return (
     <>
       <div style={{ position: "relative" }}>
-        <AllProduct filter={searchTerm} Showloader={true} isShow={true} />
+        <AllProduct filter={searchTerm} Showloader={true} Show={true} />
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import "../styleFolder/category.css"
 import styled from "styled-components";
 const List = styled.li`
-  ${"" /* border: 2px solid wheat; */}
   border-radius: 50px;
   text-align: center;
   font-size: 14px;

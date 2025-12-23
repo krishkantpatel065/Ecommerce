@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 const UserNav = () => {
   const [userName, setUserName] = useState("fg");
   useEffect(() => {
-    const inform = JSON.parse(localStorage.getItem("user"))[0];
-    setUserName(inform?.name);
-    console.log(inform);
-    console.log(userName);
+    const inform = JSON.parse(localStorage.getItem("user")) || [];
+    if (inform) {
+      const parsedName = inform[0]
+      setUserName(parsedName?.name)
+    }
+    else{
+      setUserName(null)
+    }
+    // setUserName(inform?.name);
+    // console.log(inform);
+    // console.log(userName);
   }, []);
 
   return (

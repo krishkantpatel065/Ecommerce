@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import "../styleFolder/slidingImage.css";
 function SlidingImage() {
   const [current, setCurrent] = useState(0);
   const TotalSlide = 4;
   const nextSlide = () => {
     setCurrent((prev) => (prev === TotalSlide -1 ? 0 : prev + 1));
-    console.log(TotalSlide);
-    
   };
   const prevSlide = () => {
     setCurrent((prev) => (prev === 0 ? TotalSlide - 1 : prev - 1));

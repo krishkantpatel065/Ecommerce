@@ -1,5 +1,5 @@
 import "../styleFolder/SearchBar.css";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React,{ useCallback, useEffect, useMemo, useState } from "react";
 
 function SearchComponent({ initialItems, term, handleChange }) {
   const [searchInput, setSearchInput] = useState("");
@@ -12,7 +12,7 @@ function SearchComponent({ initialItems, term, handleChange }) {
       "Mobile",
       "Tv",
       "IPhone",
-      "Laptop",
+      "Laptop", 
       "HeadPhone",
       "Smartwatch",
     ],
@@ -32,10 +32,10 @@ function SearchComponent({ initialItems, term, handleChange }) {
       item.includes(searchInput.toLowerCase())
     );
     setFilteredItems(results);
-    console.log(filteredItems);
+    // console.log(filteredItems);
   }, [searchInput, initialItems]);
 
-  console.log(filteredItems);
+  // console.log(filteredItems);
   return (
     <div>
       <div className="search-bar">
@@ -51,4 +51,4 @@ function SearchComponent({ initialItems, term, handleChange }) {
     </div>
   );
 }
-export default SearchComponent;
+export default React.memo(SearchComponent);

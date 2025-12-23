@@ -6,6 +6,7 @@ import "../styleFolder/navbar.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useSelector } from "react-redux";
 import SearchComponent from "./SearchComponent";
+import WishCount from "./wishCount";
 
 function Navbar({ onSearch }) {
   const { user, logout } = useContext(AuthContext);
@@ -208,7 +209,8 @@ function Navbar({ onSearch }) {
                     alignItems: "center",
                   }}
                 >
-                  <i className="fa-regular fa-heart"></i>
+                <WishCount/>
+                 {/* <NavLink to="/product/wishlist"> <i className="fa-regular fa-heart"></i></NavLink> */}
                 </div>
               )}
             </div>

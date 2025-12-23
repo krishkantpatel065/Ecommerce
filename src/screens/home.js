@@ -20,13 +20,13 @@ function Home() {
           <ShopSection name={"Sale Is Live"} />
           <AllProduct Showloader={false} isShow={false} />
           {/* <Product /> */}
-          <div className="nirvana-image">
+          <div className="">
             <ShopSection name={"Explore Nirvana "} />
-            <img src="/nirvana.webp" alt="nirvana image" />
+            <img src="/assets/nirvana.webp" alt="nirvana image" className="max-7xl  mx-auto px-10 rounded-lg"/>
           </div>
-          <ShopSection isShow={false} name={"Big Deals "} />
+          <ShopSection hide={false} name={"Big Deals "} />
           <Catogary />
-          <AllProduct Showloader={false} isShow={false} />
+          <AllProduct Showloader={false} Show={false} />
         </div>
       </div>
       <Footer />
