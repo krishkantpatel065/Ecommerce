@@ -2,25 +2,26 @@ import { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { addItem, addWish, removeWish } from "../redux/slice";
+import { addItem, addWish, removeWish } from "../redux/CartSlice";
 import { fetchProducts } from "../redux/ProductSlice";
 import Pagination from "../components/Pagination";
-import Spinner from "../components/Spinner";
-import ScrollToTop from "../components/scrollToTop";
+import Spinner from "../others/Spinner";
+import ScrollToTop from "../others/scrollToTop";
 
 function AllProduct({ filter = "", Showloader = false, Show }) {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items: totalProduct = [], status } = useSelector(
-    (state) => state.products
+    (state) => state.products,
   );
   const cartIt = useSelector((state) => state.cart.items);
   const wishItem = useSelector((state) => state.cart.wish);
-
   // console.log(totalProduct)
   useEffect(() => {
-    if (!totalProduct.length) dispatch(fetchProducts());
+    if (!totalProduct.length) {
+      dispatch(fetchProducts())
+    };
   }, [dispatch, totalProduct.length]);
 
   const gotoCart = () => navigate("/order");
@@ -28,8 +29,8 @@ function AllProduct({ filter = "", Showloader = false, Show }) {
 
   const filteredProducts = filter
     ? totalProduct.filter((item) =>
-      item.title.toLowerCase().includes(filter.toLowerCase())
-    )
+        item.title.toLowerCase().includes(filter.toLowerCase()),
+      )
     : totalProduct;
 
   const numberOfPages = Math.ceil(filteredProducts.length / PerPage);
@@ -37,7 +38,7 @@ function AllProduct({ filter = "", Showloader = false, Show }) {
   const paginatedProducts = Show
     ? filteredProducts.slice((page - 1) * PerPage, page * PerPage)
     : totalProduct.slice(0, 5);
-    
+
   if (Showloader && !totalProduct.length)
     return (
       <div className="flex justify-center items-center">
@@ -99,24 +100,31 @@ function AllProduct({ filter = "", Showloader = false, Show }) {
                   </NavLink>
                 </div>
 
-                <div className="px-0 mt-3">
+                <div className="px-3 mt-3">
                   <div className="px-1 mt-4 text-sm">
-                    <h3>{item.title.slice(0, 20)}</h3> <h2>₹ {item.price}/-</h2>
+                    <h3>{item.title.slice(0, 20)}</h3>
+                    <h2>₹ {item.price}/-</h2>
                   </div>
                 </div>
-                <div className="px-6">
+
+                <div className="px-3">
                   <div
-                    className={`px-12 w-full py-1 text-center mt-3 gap-1 flex items-center rounded-md ${inCart ? "bg-orange-600" : "bg-blue-600"
-                      }`}
-                   >
-                    <img src="/assets/add.png" alt="" className="text-black w-6" />
+                    className={`py-1 rounded-sm flex gap-3 justify-center items-center ${
+                      inCart ? "bg-orange-500" : "bg-blue-600"
+                    } px-3 mt-3`}
+                  >
+                    <img
+                      src="/assets/add.png"
+                      alt=""
+                      className="text-black w-5"
+                    />
                     <button
-                      className={`text-[10px] w-5xl rounded-sm text-white `}
+                      className={`text-sm text-white`}
                       onClick={() =>
                         inCart ? gotoCart() : dispatch(addItem(item))
                       }
                     >
-                      {inCart ? "Go to Cart" : "Add to Cart"}
+                      {inCart ? "Go to Cart" : "Add To cart"}
                     </button>
                   </div>
                 </div>

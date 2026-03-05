@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { clearCart, removeItem, addItem } from "../redux/slice";
+import { clearCart, removeItem, addItem } from "../redux/CartSlice";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ApplyCoupon from "../components/ApplyCoupon";
@@ -54,11 +54,11 @@ function Order() {
                         <div className="flex items-center gap-2 w-[100px]">
                           <img
                             src={item.image}
-                            alt="laptop"
+                            alt={item.title}
                             className="w-[31px] h-[39px] "
                           />
-                          <h2 className="text-[16px] font-normal ">
-                            {trimText(item.title, 5)}
+                          <h2 className="text-[14px] font-normal ">
+                            {trimText(item.title, 8)}
                           </h2>
                         </div>
                         <div className="w-[90px]">

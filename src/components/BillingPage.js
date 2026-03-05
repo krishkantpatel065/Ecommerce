@@ -4,7 +4,7 @@ import ApplyCoupon from "../components/ApplyCoupon";
 import Subtotal from "../components/Subtotal";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../redux/slice";
+import { clearCart } from "../redux/CartSlice";
 import { AuthContext } from "../context/AuthContext";
 import InputForm from "./InputForm";
 

@@ -11,7 +11,6 @@ const couponSlice = createSlice({
     applyCoupon(state, action) {
       const code = action.payload;
       // console.log(code);
-
       if (!code) {
         state.type = "error";
         state.message = "Enter Coupon Code";

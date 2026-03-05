@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import { addItem } from "../redux/slice";
+import { addItem } from "../redux/CartSlice";
 import { useDispatch } from "react-redux";
 import "../styleFolder/productdetail.css";
 const ProductDetail = () => {

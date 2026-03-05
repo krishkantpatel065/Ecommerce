@@ -1,4 +1,4 @@
-import React, { useContext, useState,useMemo } from "react";
+import React, { useContext, useState, useMemo, useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import AddToCart from "./AddToCart";
@@ -12,9 +12,15 @@ function Navbar({ onSearch }) {
   const { user, logout } = useContext(AuthContext);
   const [term, setTerm] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [items, setItems] = useState([])
   const navigate = useNavigate();
   const totalProduct = useSelector((state) => state.products.items);
-  const items = useMemo(() => totalProduct, []);
+  // const items = /useMemo(() => totalProduct, []);
+
+  // 
+  useEffect(() => {
+    // setItems( totalProduct)
+  }, [])
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -23,8 +29,8 @@ function Navbar({ onSearch }) {
     const value = e.target.value;
     setTerm(value);
     onSearch(value);
-    navigate("/product");
   };
+  const brandName = "Boat"
   return (
     <>
       <div className="parentDiv">
@@ -37,7 +43,7 @@ function Navbar({ onSearch }) {
         <nav className="navbar">
           <div className="navbar-container">
             <div className="logo">
-              <h1></h1>
+              <h1 className="text-xl font-bold">{brandName}</h1>
               <NavLink to="/">
                 <img
                   src="/assets/Logo.webp"
@@ -53,7 +59,7 @@ function Navbar({ onSearch }) {
                     className={({ isActive }) =>
                       isActive ? "nav-link active" : "nav-link"
                     }
-                    // style={({ isActive }) => ({
+                    // style={({ isActive }) =>({ 
                     //   color: isActive ? "blue" : "red"
                     // })}
                     // style={({ isActive }) => ({})}
@@ -69,6 +75,7 @@ function Navbar({ onSearch }) {
                     className={({ isActive }) =>
                       isActive ? "nav-link active" : "nav-link"
                     }
+
                     onClick={() => setMenuOpen(false)}
                   >
                     Products
@@ -209,8 +216,8 @@ function Navbar({ onSearch }) {
                     alignItems: "center",
                   }}
                 >
-                <WishCount/>
-                 {/* <NavLink to="/product/wishlist"> <i className="fa-regular fa-heart"></i></NavLink> */}
+                  <WishCount />
+                  {/* <NavLink to="/product/wishlist"> <i className="fa-regular fa-heart"></i></NavLink> */}
                 </div>
               )}
             </div>

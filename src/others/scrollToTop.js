@@ -21,29 +21,28 @@ const Button = styled.button`
     background-color: #333;
   }
 `;
-
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      setVisible(window.scrollY > 250);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
-      top: 0,
+      // top:document.documentElement.scrollHeight,
+      top:0,
       behavior: "smooth",
     });
   };
 
   return (
     <Button onClick={scrollToTop} $show={visible} title="Go to top">
-     <i className="fa-solid fa-arrow-up"></i>
+      <i className="fa-solid fa-arrow-up"></i>
     </Button>
   );
 };

@@ -18,6 +18,7 @@ function SearchComponent({ initialItems, term, handleChange }) {
     ],
     []
   );
+console.log(initialItems);
 
   // useEffect(() => {
   //   const timer = setInterval(() => {
@@ -28,11 +29,11 @@ function SearchComponent({ initialItems, term, handleChange }) {
   // console.log("KKKK");
 
   useEffect(() => {
-    const results = initialItems.filter((item) =>
-      item.includes(searchInput.toLowerCase())
+    const results = initialItems.filter((it) =>
+      it.includes(searchInput.toLowerCase())
     );
     setFilteredItems(results);
-    // console.log(filteredItems);
+    console.log(filteredItems);
   }, [searchInput, initialItems]);
 
   // console.log(filteredItems);

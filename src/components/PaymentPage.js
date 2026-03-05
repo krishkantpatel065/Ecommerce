@@ -19,7 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { clearCart } from "../redux/slice";
+import { clearCart } from "../redux/CartSlice";
 export default function PaymentPage() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [userDetail, setUserDetail] = useState({

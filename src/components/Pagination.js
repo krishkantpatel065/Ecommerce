@@ -10,7 +10,7 @@ function Pagination({ numberOfPages, page, setPage }) {
         style={{ backgroundColor: page === i ? "red" : "#eee" }}
       >
         {i}
-      </button>
+      </button>,
     );
   }
   return (

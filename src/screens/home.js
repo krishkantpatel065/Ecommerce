@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import AllProduct from "../screens/AllProduct";
 import Product from "../components/Product";
-import SlidingImage from "../components/SliderImage";
+import SlidingImage from "../others/SliderImage";
 import DeliveryReturn from "../components/DeliveryRetrun";
 import SmallImage from "../components/Smallimage";
 import Footer from "../components/Footer";
 import "../styleFolder/Home.css";
 import ShopSection from "../components/ShopSection";
-import Catogary from "../components/categary";
+import Category from "../components/categary";
 
 function Home() {
   return (
@@ -25,7 +25,7 @@ function Home() {
             <img src="/assets/nirvana.webp" alt="nirvana image" className="max-7xl  mx-auto px-10 rounded-lg"/>
           </div>
           <ShopSection hide={false} name={"Big Deals "} />
-          <Catogary />
+         <Category />
           <AllProduct Showloader={false} Show={false} />
         </div>
       </div>

@@ -22,12 +22,12 @@ const ApplyCoupon = () => {
       toast(
         <div>
           <strong>Coupon Applied </strong>
-          <p>You saved ₹30 🎉</p>
+          <p>You saved ₹50 🎉</p>
         </div>,
         {
           hideProgressBar: true,
         }
-      );
+      )
     }
     if (type === "error") {
       toast.error(message, { hideProgressBar: true });

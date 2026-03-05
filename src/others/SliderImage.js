@@ -4,7 +4,7 @@ function SlidingImage() {
   const [current, setCurrent] = useState(0);
   const TotalSlide = 4;
   const nextSlide = () => {
-    setCurrent((prev) => (prev === TotalSlide -1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === TotalSlide - 1 ? 0 : prev + 1));
   };
   const prevSlide = () => {
     setCurrent((prev) => (prev === 0 ? TotalSlide - 1 : prev - 1));

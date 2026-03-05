@@ -1,19 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
-
+import {useAuth}  from "../context/useAuth"
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState({});
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     number: "",
   });
-  const newError = {};
+  const errorType = {};
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,31 +20,44 @@ function Login() {
     setError({ ...error, [name]: "" });
   };
   const validate = () => {
-    if (!formData.name.trim()) newError.name = "Name is required";
-    if (!formData.email.trim()) newError.email = "Email is required";
+    if (!formData.name.trim()) errorType.name = "Name is required";
+    if (!formData.email.trim()) errorType.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newError.email = "Enter valid email.";
+      errorType.email = "Enter valid email.";
 
-    if (!formData.password.trim()) newError.password = "Password is required";
+    if (!formData.password.trim()) errorType.password = "Password is required";
     else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(formData.password))
-      newError.password =
+      errorType.password =
         "Weak password (need upper, lower, number, 8+ chars)..";
-    return newError;
+    return errorType;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formsError = validate();
 
+    // const savedUser = JSON.parse(localStorage.getItem("user"));
+    // const LoggedInUser = savedUser.find(
+    //   (user) =>
+    //     user.email === formData.email && user.password === formData.password
+    // );
+    // if (LoggedInUser) {
+    //   toast("You Have Already Account please Signin");
+    //   return;
+    // }
     setError(formsError);
     if (Object.keys(formsError).length === 0) {
-      login({
+      const token = "token_" + Date.now();
+      const user = {
         name: formData.name,
         email: formData.email,
-        password: formData.password,
-        number: "",
+        number: formData.number,
+        role: "user", // optional
+      };
+      login({user,token});
+      toast.success("Login Successful", {
+        hideProgressBar: true,
       });
-      toast.success("Login Successful");
       navigate("/");
     }
   };
@@ -54,8 +66,6 @@ function Login() {
     setShowPassword((prev) => !prev);
   };
   let save = JSON.parse(localStorage.getItem("user"));
-  console.log(save);
-
   return (
     <div className="flex py-[56px] w-full">
       <div className="w-[50%]">
@@ -116,7 +126,9 @@ function Login() {
             </button>
           </div>
           {error.password && (
-            <p className="mt-[-7px] text-[12px] text-red-600">{error.password}</p>
+            <p className="mt-[-7px] text-[12px] text-red-600">
+              {error.password}
+            </p>
           )}
         </div>
         <div className="flex justify-between items-center w-[75%]">
@@ -128,6 +140,7 @@ function Login() {
           </button>
           <Link className="text-blue-800">Forget Password?</Link>
         </div>
+        {/* <div>Already have Account? <Navlink to="sign"></Navlink></div> */}
       </div>
     </div>
   );
